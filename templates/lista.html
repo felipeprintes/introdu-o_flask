@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jogoteca</title>
+    <title>{{titulo}}</title>
   </head>
   <body>
     <div class="container">
@@ -17,15 +17,11 @@
                 </tr>
             </thead>
             <tbody>
+              {% for i in meusJogos %}
                 <tr>
-                    <td>God of War 4</td>
+                    <td>{{i}}</td>
                 </tr>
-                <tr>
-                    <td>Super Smash Bros</td>
-                </tr>
-                <tr>
-                    <td>Super Mario RPG</td>
-                </tr>
+              {% endfor %}
             </tbody>
         </table>
     </div>
