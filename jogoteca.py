@@ -12,21 +12,21 @@ jogo1=Jogo("mario", "aventura", "nintendo")
 jogo2=Jogo("fifa", "esporte", "play4")
 lista =[jogo1,jogo2]
 
-@app.route('/inicio')
+@app.route('/')
 def ola():
-
     return render_template('lista.html', titulo="Meus Jogos", meusJogos=lista)
 
 @app.route('/novo')
 def novo():
     return render_template('novo.html', titulo='Novo Jogo')
 
-@app.route('/criar')
+@app.route('/criar', methods=['POST',])
 def criar():                    #pegar dados vindo do servidor
     nome=request.fomr['nome']
     categoria=request.fomr['categoria']
     console=request.fomr['console']
     jogo = Jogo(nome, categoria,console)
     lista.append(jogo)
+    return render_template('lista.html', titulo="Jogo", meusJogos=lista)
 
-app.run()
+app.run(debug=True)
