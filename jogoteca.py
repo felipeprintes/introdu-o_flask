@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -22,11 +22,11 @@ def novo():
 
 @app.route('/criar', methods=['POST',])
 def criar():                    #pegar dados vindo do servidor
-    nome=request.fomr['nome']
-    categoria=request.fomr['categoria']
-    console=request.fomr['console']
+    nome=request.form['nome']
+    categoria=request.form['categoria']
+    console=request.form['console']
     jogo = Jogo(nome, categoria,console)
     lista.append(jogo)
-    return render_template('lista.html', titulo="Jogo", meusJogos=lista)
+    return redirect('/')
 
 app.run(debug=True)
